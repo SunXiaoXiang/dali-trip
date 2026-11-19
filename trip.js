@@ -22,27 +22,27 @@ const ALWAYS_ON = new Set(["didi", "access", "transport"]);
 
 // verified: false 表示示例数据，出发前请实地/电话核实后改为 true
 const PLACES = [
-  { id: "airport", name: "大理凤仪机场", kind: "transport", emoji: "✈️", lnglat: [100.3197, 25.6493], desc: "到古城打车约 40 分钟，正规平台 ¥80 左右", tips: ["出口拉客的黑车不要坐"], note: "transport" },
-  { id: "station", name: "大理站", kind: "transport", emoji: "🚄", lnglat: [100.2437, 25.5955], desc: "昆明南站高铁约 2 小时，班次多", note: "transport" },
-  { id: "oldtown", name: "大理古城", kind: "checkin", emoji: "🏮", lnglat: [100.1636, 25.6935], desc: "第一次去首选住这里，吃喝玩都方便", tips: ["浅眠选北门附近，酒吧街到凌晨"], note: "stay" },
+  { id: "airport", name: "大理凤仪机场", kind: "transport", emoji: "✈️", lnglat: [100.3210, 25.6470], desc: "到古城打车约 40 分钟，正规平台 ¥80 左右", tips: ["出口拉客的黑车不要坐"], note: "transport" },
+  { id: "station", name: "大理站", kind: "transport", emoji: "🚄", lnglat: [100.2506, 25.5896], desc: "昆明南站高铁约 2 小时，班次多", note: "transport" },
+  { id: "oldtown", name: "大理古城", kind: "checkin", emoji: "🏮", lnglat: [100.1640, 25.6948], desc: "第一次去首选住这里，吃喝玩都方便", tips: ["浅眠选北门附近，酒吧街到凌晨"], note: "stay" },
   { id: "renmin", name: "人民路", keyword: "大理古城人民路", kind: "food", emoji: "🍜", lnglat: [100.1600, 25.6928], desc: "喜洲粑粑、饵丝、烤乳扇", bestTime: "傍晚到 21:00（之后多数关门）", tips: ["门口拉客的店别去"], note: "food" },
-  { id: "beimen", name: "北门菜市场", keyword: "大理古城北门菜市场", kind: "food", emoji: "🛍️", lnglat: [100.1655, 25.6995], desc: "伴手礼（鲜花饼/扎染）+ 夜宵", note: "food" },
-  { id: "caicun", name: "才村码头", kind: "photo", emoji: "🎠", lnglat: [100.1958, 25.7046], desc: "日出 + 网红秋千", bestTime: "日出前后 6:40-7:30", tips: ["秋千要早去排队"], note: "photo" },
-  { id: "panxi", name: "磻溪村 S 弯", keyword: "磻溪S湾", kind: "photo", emoji: "🪞", lnglat: [100.2040, 25.7625], desc: "天空之境", bestTime: "无风的清晨 7-8 点", tips: ["手机倒置贴近水面", "0.5x 广角，人站 1/3 处"], note: "photo" },
-  { id: "longkan", name: "龙龛码头", kind: "photo", emoji: "🌉", lnglat: [100.1938, 25.7246], desc: "生态廊道廊桥，逆光剪影", bestTime: "傍晚 18:00-19:00", note: "photo" },
-  { id: "cangshan", name: "苍山洗马潭索道", kind: "sight", emoji: "🚡", lnglat: [100.1370, 25.7030], desc: "索道 ¥286，山顶海拔近 4000m", tips: ["旺季至少提前 3 天预约", "山顶冷，带外套"], note: "overview" },
-  { id: "xizhou", name: "喜洲古镇", kind: "sight", emoji: "🌾", lnglat: [100.1268, 25.8530], desc: "白族古镇 + 麦田/稻田，必吃喜洲粑粑", bestTime: "3-4 月绿麦 / 9 月金稻", tips: ["穿白裙/草帽最出片"], note: "photo" },
-  { id: "xiaoputuo", name: "小普陀", keyword: "大理小普陀", kind: "sight", emoji: "🛕", lnglat: [100.2280, 25.7880], desc: "洱海中的小岛，东线顺路打卡", note: "photo" },
-  { id: "wase", name: "挖色", keyword: "挖色镇", kind: "food", emoji: "🐟", lnglat: [100.2330, 25.8150], desc: "东线人少，午饭吃酸辣鱼", note: "food" },
-  { id: "nanzhao", name: "南诏风情岛", kind: "sight", emoji: "🏝️", lnglat: [100.2086, 25.9020], desc: "双廊对面的小岛，白族风情建筑", note: "overview" },
-  { id: "shuanglang", name: "双廊古镇", kind: "stay", emoji: "🌊", lnglat: [100.1960, 25.9110], desc: "海景房 ¥400-1200/晚，推窗即洱海", bestTime: "日落看苍山方向", tips: ["预订前看带图差评"], note: "stay" },
+  { id: "beimen", name: "北门菜市场", keyword: "大理古城北门菜市场", kind: "food", emoji: "🛍️", lnglat: [100.1571, 25.6982], desc: "伴手礼（鲜花饼/扎染）+ 夜宵", note: "food" },
+  { id: "caicun", name: "才村码头", kind: "photo", emoji: "🎠", lnglat: [100.1936, 25.7187], desc: "日出 + 网红秋千", bestTime: "日出前后 6:40-7:30", tips: ["秋千要早去排队"], note: "photo" },
+  { id: "panxi", name: "磻溪村 S 弯", keyword: "磻溪S湾", kind: "photo", emoji: "🪞", lnglat: [100.1505, 25.7669], desc: "天空之境", bestTime: "无风的清晨 7-8 点", tips: ["手机倒置贴近水面", "0.5x 广角，人站 1/3 处"], note: "photo" },
+  { id: "longkan", name: "龙龛码头", kind: "photo", emoji: "🌉", lnglat: [100.2073, 25.6968], desc: "生态廊道廊桥，逆光剪影", bestTime: "傍晚 18:00-19:00", note: "photo" },
+  { id: "cangshan", name: "苍山洗马潭索道", kind: "sight", emoji: "🚡", lnglat: [100.1388, 25.6678], desc: "索道 ¥286，山顶海拔近 4000m", tips: ["旺季至少提前 3 天预约", "山顶冷，带外套"], note: "overview" },
+  { id: "xizhou", name: "喜洲古镇", kind: "sight", emoji: "🌾", lnglat: [100.1316, 25.8529], desc: "白族古镇 + 麦田/稻田，必吃喜洲粑粑", bestTime: "3-4 月绿麦 / 9 月金稻", tips: ["穿白裙/草帽最出片"], note: "photo" },
+  { id: "xiaoputuo", name: "小普陀", keyword: "大理小普陀", kind: "sight", emoji: "🛕", lnglat: [100.2230, 25.8075], desc: "洱海中的小岛，东线顺路打卡", note: "photo" },
+  { id: "wase", name: "挖色", keyword: "挖色镇", kind: "food", emoji: "🐟", lnglat: [100.2257, 25.8289], desc: "东线人少，午饭吃酸辣鱼", note: "food" },
+  { id: "nanzhao", name: "南诏风情岛", kind: "sight", emoji: "🏝️", lnglat: [100.1915, 25.9021], desc: "双廊对面的小岛，白族风情建筑", note: "overview" },
+  { id: "shuanglang", name: "双廊古镇", kind: "stay", emoji: "🌊", lnglat: [100.1943, 25.9083], desc: "海景房 ¥400-1200/晚，推窗即洱海", bestTime: "日落看苍山方向", tips: ["预订前看带图差评"], note: "stay" },
 
-  // 以下为手工维护的服务设施（高德没有这类数据），示例坐标需出发前核实
+  // 以下为手工维护的服务设施，示例数据需出发前核实
   { id: "didi-airport", name: "机场网约车上车点", kind: "didi", emoji: "🚕", lnglat: [100.3188, 25.6487], desc: "按到达层指示牌前往网约车专用通道", verified: false },
-  { id: "didi-station", name: "大理站网约车上车点", kind: "didi", emoji: "🚕", lnglat: [100.2445, 25.5948], desc: "出站后按「网约车」指示牌走", verified: false },
-  { id: "didi-nanmen", name: "古城南门上车点", kind: "didi", emoji: "🚕", lnglat: [100.1625, 25.6880], desc: "古城内部分路段禁行，到城门外打车更快", verified: false },
-  { id: "lift-station", name: "大理站无障碍电梯", kind: "access", emoji: "🛗", lnglat: [100.2440, 25.5958], desc: "大件行李/老人可走无障碍电梯进出站", verified: false },
-  { id: "lift-cangshan", name: "索道站无障碍通道", kind: "access", emoji: "♿", lnglat: [100.1374, 25.7034], desc: "行动不便可咨询工作人员走无障碍通道", verified: false },
+  { id: "didi-station", name: "大理站网约车上车点", kind: "didi", emoji: "🚕", lnglat: [100.2496, 25.5894], desc: "出站后按「网约车」指示牌走", verified: false },
+  { id: "didi-nanmen", name: "古城南门上车点", kind: "didi", emoji: "🚕", lnglat: [100.1687, 25.6880], desc: "南门生态停车场附近；古城内部分路段禁行，到城门外打车更快", verified: false },
+  { id: "lift-station", name: "大理站无障碍电梯", kind: "access", emoji: "🛗", lnglat: [100.2508, 25.5899], desc: "大件行李/老人可走无障碍电梯进出站", verified: false },
+  { id: "lift-cangshan", name: "索道站无障碍通道", kind: "access", emoji: "♿", lnglat: [100.1392, 25.6682], desc: "索道下站在天龙八部影视城内，行动不便可咨询工作人员走无障碍通道", verified: false },
 ];
 
 // priority: must 必做 / should 推荐 / optional 可选。同一天按顺序生成路线

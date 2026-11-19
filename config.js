@@ -2,8 +2,8 @@
 // 2021-12-02 之后申请的 Key 必须同时配置安全密钥 securityJsCode
 window.MYTRIP_CONFIG = {
   amap: {
-    key: "3c4607f3d95bb29a5b705585b434f718",
-    securityJsCode: "",
+    key: "0d9fe3ed1536284af53ef3023cdb1b7b",
+    securityJsCode: "2ba9d9de489cf85dee9b48f957404146",
     city: "大理",
     // local：使用 trip.js 里的 PLACES 坐标
     // amap：以 PLACES 的 keyword 调用高德 POI 搜索，用真实位置/地址覆盖本地数据

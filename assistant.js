@@ -201,7 +201,7 @@ function renderMap() {
   drawRoute();
   const focus = order.length ? order.map(id => markers.get(id)).filter(Boolean) : [...markers.values()];
   // avoid：[上, 下, 左, 右]，留出顶部筛选条和右侧按钮；地图容器本身已在任务面板之上
-  if (focus.length) map.setFitView(focus, false, [170, 40, 40, 60], 15);
+  if (focus.length) map.setFitView(focus, false, [170, 40, 40, 80], 15);
 }
 
 function drawRoute() {

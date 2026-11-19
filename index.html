@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>大理 5 天 4 晚 · 旅行助手</title>
+<meta name="theme-color" content="#ffffff" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="大理助手" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="phone">
+  <!-- 地图首页：地点图层 + 按天路线 + 任务 -->
+  <main class="tab-page map-tab" id="mapTab">
+    <div class="amap" id="amap"></div>
+    <header class="map-head">
+      <div class="mh-row">
+        <div class="mh-title" id="mapTitle"></div>
+        <button class="mh-btn" id="layerBtn">🗂️ 图层</button>
+      </div>
+      <div class="chips map-chips" id="mapChips"></div>
+    </header>
+    <div class="layer-panel hidden" id="layerPanel"></div>
+    <div class="map-fabs" id="mapFabs">
+      <button class="fab" id="locBtn" aria-label="我的位置">🎯</button>
+      <button class="fab sos-fab" data-goto="sos">SOS</button>
+    </div>
+    <div class="map-empty hidden" id="mapEmpty"></div>
+    <section class="sheet" id="sheet"></section>
+    <section class="map-card hidden" id="mapCard"></section>
+  </main>
+
+  <!-- 行程任务 -->
+  <main class="tab-page page-tab hidden" id="planTab">
+    <header class="page-head">
+      <h1>✅ 行程任务</h1>
+      <p id="planProgress"></p>
+      <div class="chips" id="planChips"></div>
+    </header>
+    <div class="page-body" id="planList"></div>
+  </main>
+
+  <!-- 应急 -->
+  <main class="tab-page page-tab hidden" id="sosTab">
+    <header class="page-head sos-head">
+      <h1>🆘 应急求助</h1>
+      <p>先确保人身安全，再联系团员 / 拨打电话</p>
+    </header>
+    <div class="page-body">
+      <div class="sos-calls" id="sosCalls"></div>
+      <button class="sos-share" data-share-loc>📤 复制我的位置，发给团员</button>
+      <section class="sos-sec">
+        <h2>附近应急设施 <span class="sos-where" id="sosWhere"></span></h2>
+        <div class="chips" id="sosTypes"></div>
+        <div class="poi-list" id="sosNearby"></div>
+      </section>
+      <section class="sos-sec">
+        <h2>🚕 上车点 · 🛗 电梯/无障碍</h2>
+        <div class="poi-list" id="sosManual"></div>
+      </section>
+      <section class="sos-sec">
+        <h2>⚠️ 注意事项</h2>
+        <ul class="sos-tips" id="sosTips"></ul>
+      </section>
+    </div>
+  </main>
+
+  <!-- 攻略：小红书 / 抖音风格 -->
+  <div class="hidden" id="guideTab">
+  <!-- 顶部导航 -->
+  <header class="topbar" id="topbar">
+    <button class="icon-btn" aria-label="菜单">☰</button>
+    <nav class="tabs" id="tabs">
+      <span data-tab="follow">关注</span>
+      <span data-tab="discover" class="active">发现</span>
+      <span data-tab="city">大理</span>
+    </nav>
+    <button class="icon-btn" aria-label="搜索">🔍</button>
+  </header>
+
+  <!-- 模式切换 -->
+  <div class="mode-switch" id="modeSwitch">
+    <button data-mode="note" class="active">📕 图文</button>
+    <button data-mode="video">🎬 竖屏</button>
+  </div>
+
+  <!-- 小红书：瀑布流 -->
+  <main class="feed" id="feed">
+    <div class="feed-banner">
+      <div class="banner-title">🏔️ 大理 · 5天4晚全攻略合集</div>
+      <div class="banner-sub">苍山洱海 / 古城美食 / 拍照机位 / 避坑指南 · 共 <b id="noteCount">0</b> 篇</div>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="masonry" id="masonry">
+      <div class="col" id="col0"></div>
+      <div class="col" id="col1"></div>
+    </div>
+    <div class="feed-end">— 到底啦，收藏起来慢慢看 ⭐ —</div>
+  </main>
+
+  <!-- 抖音：竖屏滑动 -->
+  <main class="reels hidden" id="reels"></main>
+  </div>
+
+  <!-- 笔记详情 -->
+  <section class="detail hidden" id="detail">
+    <header class="detail-top">
+      <button class="icon-btn" id="detailBack" aria-label="返回">‹</button>
+      <div class="author" id="detailAuthor"></div>
+      <button class="follow-btn" id="detailFollow">关注</button>
+      <button class="icon-btn" aria-label="分享" data-share>↗</button>
+    </header>
+    <div class="detail-scroll" id="detailScroll">
+      <div class="carousel" id="carousel">
+        <div class="track" id="track"></div>
+        <div class="counter" id="counter"></div>
+      </div>
+      <div class="dots" id="dots"></div>
+      <article class="detail-body">
+        <h1 id="detailTitle"></h1>
+        <div class="detail-text" id="detailText"></div>
+        <div class="detail-tags" id="detailTags"></div>
+        <div class="detail-meta" id="detailMeta"></div>
+      </article>
+      <section class="comments">
+        <div class="comments-title" id="commentsTitle"></div>
+        <div class="comment-input-fake" id="commentFocus">💬 说点什么，让作者也看看~</div>
+        <div id="commentList"></div>
+      </section>
+    </div>
+    <footer class="detail-bar">
+      <input id="commentInput" placeholder="✏️ 说点什么..." maxlength="100" />
+      <button class="bar-btn" id="barLike"><span class="i">♡</span><span class="n"></span></button>
+      <button class="bar-btn" id="barStar"><span class="i">☆</span><span class="n"></span></button>
+      <button class="bar-btn" id="barCmt"><span class="i">💬</span><span class="n"></span></button>
+    </footer>
+  </section>
+
+  <!-- 底部 Tab -->
+  <footer class="bottombar" id="bottombar">
+    <span data-goto="map" class="active"><b>🗺️</b>地图</span>
+    <span data-goto="plan"><b>✅</b>行程</span>
+    <span data-goto="guide"><b>📕</b>攻略</span>
+    <span data-goto="sos" class="sos"><b>🆘</b>应急</span>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="config.js"></script>
+<script src="data.js"></script>
+<script src="trip.js"></script>
+<script src="app.js"></script>
+<script src="assistant.js"></script>
+<script>
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+</script>
+</body>
+</html>

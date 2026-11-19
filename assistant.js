@@ -153,7 +153,7 @@ function renderMapHead() {
 
 function setDay(d) {
   mapDay = d;
-  sheetOpen = d != null;
+  sheetOpen = false;
   renderMapHead();
   renderMap();
 }
@@ -200,8 +200,8 @@ function renderMap() {
   map.add([...markers.values()]);
   drawRoute();
   const focus = order.length ? order.map(id => markers.get(id)).filter(Boolean) : [...markers.values()];
-  // avoid：[上, 下, 左, 右]，留出顶部筛选条和底部任务面板
-  if (focus.length) map.setFitView(focus, false, [130, 150, 40, 60], 15);
+  // avoid：[上, 下, 左, 右]，留出顶部筛选条和右侧按钮；地图容器本身已在任务面板之上
+  if (focus.length) map.setFitView(focus, false, [170, 40, 40, 60], 15);
 }
 
 function drawRoute() {
@@ -386,7 +386,7 @@ $("#mapCard").addEventListener("click", async e => {
       zIndex: 90,
     }));
     map.add(nearbyMarkers);
-    map.setFitView([markers.get(p.id), ...nearbyMarkers].filter(Boolean), false, [130, 330, 40, 40], 17);
+    map.setFitView([markers.get(p.id), ...nearbyMarkers].filter(Boolean), false, [170, 210, 40, 40], 17);
   }
 });
 
